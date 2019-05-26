@@ -1,17 +1,17 @@
-#ifndef ORDERED_TABLE_H
+ï»¿#ifndef ORDERED_TABLE_H
 #define ORDERED_TABLE_H
 
 #include "../include/tableelement.h"
 #include "../include/tree.h"
 #include <iostream>
 
-// Êëàññ "óïîðÿäî÷åííàÿ òàáëèöà"
+// ÐšÐ»Ð°ÑÑ "ÑƒÐ¿Ð¾Ñ€ÑÐ´Ð¾Ñ‡ÐµÐ½Ð½Ð°Ñ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ð°"
 class OrderedTable
 {
-	Tree *table; // Áèíàðíîå äåðåâî ïîèñêà
+	Tree *table; // Ð‘Ð¸Ð½Ð°Ñ€Ð½Ð¾Ðµ Ð´ÐµÑ€ÐµÐ²Ð¾ Ð¿Ð¾Ð¸ÑÐºÐ°
 
 public:
-	// Êîíñòðóêòîð òàáëèöû
+	// ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ‹
 	OrderedTable() 
 	{
 		table = new Tree();
@@ -22,25 +22,25 @@ public:
 		return table->existsKey(te);
 	}
 
-	// Äîáàâëåíèå äàííûõ
+	// Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð´Ð°Ð½Ð½Ñ‹Ñ…
 	void add(const std::string& key, const Polynomial& p)
 	{
 		int count = table->add(TableElement(key, p));
-		std::cout << "Óïîðÿäî÷åííàÿ òàáëèöà - îïåðàöèé äîáàâëåíèÿ: "
+		std::cout << "Ð£Ð¿Ð¾Ñ€ÑÐ´Ð¾Ñ‡ÐµÐ½Ð½Ð°Ñ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ð° - Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸Ð¹ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ñ: "
 			<< count << std::endl;
 	}
 
-	// Äîáàâëåíèå äàííûõ
+	// Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð´Ð°Ð½Ð½Ñ‹Ñ…
 	void add(const TableElement& te)
 	{
 		add(te.key(), te.value());
 	}
 
-	// Ïîèñê ïîëèíîìà
+	// ÐŸÐ¾Ð¸ÑÐº Ð¿Ð¾Ð»Ð¸Ð½Ð¾Ð¼Ð°
 	Polynomial get(const std::string& key)
 	{
 		auto result = table->find(TableElement(key, Polynomial()));
-		std::cout << "Óïîðÿäî÷åííàÿ òàáëèöà - îïåðàöèé ïîèñêà: "
+		std::cout << "Ð£Ð¿Ð¾Ñ€ÑÐ´Ð¾Ñ‡ÐµÐ½Ð½Ð°Ñ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ð° - Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸Ð¹ Ð¿Ð¾Ð¸ÑÐºÐ°: "
 			<< result.second << "." << std::endl;
 		return result.first->data.value();
 	}

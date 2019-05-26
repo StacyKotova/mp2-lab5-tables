@@ -1,51 +1,51 @@
-#ifndef TABLE_ELEMENT_H
+п»ї#ifndef TABLE_ELEMENT_H
 #define TABLE_ELEMENT_H
 
 #include <string>
 #include "polynomial.h"
 
-// Класс "элемент таблицы"
+// РљР»Р°СЃСЃ "СЌР»РµРјРµРЅС‚ С‚Р°Р±Р»РёС†С‹"
 class TableElement
 {
-	std::string _key; // Ключ
-	Polynomial _value; // Значение
+	std::string _key; // РљР»СЋС‡
+	Polynomial _value; // Р—РЅР°С‡РµРЅРёРµ
 
 public:
-	// Конструктор по умолчанию
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 	TableElement(){}
 
-	// Конструктор с параметрами
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
 	TableElement(const std::string& key, const Polynomial& value)
 	{
 		_key = key;
 		_value = value;
 	}
 
-	// Получение ключа
+	// РџРѕР»СѓС‡РµРЅРёРµ РєР»СЋС‡Р°
 	std::string key() const
 	{
 		return _key;
 	}
 
-	// Получение данных
+	// РџРѕР»СѓС‡РµРЅРёРµ РґР°РЅРЅС‹С…
 	Polynomial value() const
 	{
 		return _value;
 	}
 
-	// Перегрузка оператора<
+	// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР°<
 	friend bool operator<(const TableElement& te1, const TableElement& te2)
 	{
 		return te1.key() < te2.key();
 	}
 
-	// Перегрузка оператора==
+	// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР°==
 	friend bool operator==(const TableElement& te1, const TableElement& te2)
 	{
 		return te1.key() == te2.key();
 	}
 
-	// Перегрузка оператора>
+	// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР°>
 	friend bool operator>(const TableElement& te1, const TableElement& te2)
 	{
 		return te1.key() > te2.key();

@@ -1,19 +1,19 @@
-#ifndef TREE_H
+п»ї#ifndef TREE_H
 #define TREE_H
 
 #include <utility>
 #include "treenode.h"
 #include "tableelement.h"
 
-// Класс "дерево"
+// РљР»Р°СЃСЃ "РґРµСЂРµРІРѕ"
 class Tree
 {
-	TreeNode<TableElement> *root; // Корень
+	TreeNode<TableElement> *root; // РљРѕСЂРµРЅСЊ
 
-	// Добавление в дерево
+	// Р”РѕР±Р°РІР»РµРЅРёРµ РІ РґРµСЂРµРІРѕ
 	int _add(TreeNode<TableElement> *current, const TableElement& data, int count)
 	{
-		// Если пуст, то создание нового узла
+		// Р•СЃР»Рё РїСѓСЃС‚, С‚Рѕ СЃРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ СѓР·Р»Р°
 		if (current == NULL)
 		{
 			current = new TreeNode<TableElement>(data);
@@ -41,14 +41,14 @@ class Tree
 		}
 	}
 
-	// Поиск по дереву
+	// РџРѕРёСЃРє РїРѕ РґРµСЂРµРІСѓ
 	std::pair<TreeNode<TableElement>*, int> _find(TreeNode<TableElement> *current,
 		const TableElement& key, int count)
 	{
-		// Если текущий пуст или нашли ключ, то возвращаем текущий
+		// Р•СЃР»Рё С‚РµРєСѓС‰РёР№ РїСѓСЃС‚ РёР»Рё РЅР°С€Р»Рё РєР»СЋС‡, С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµРј С‚РµРєСѓС‰РёР№
 		if (current == NULL || current->data == key)
 			return std::pair<TreeNode<TableElement>*, int>(current, count + 1);
-		// Иначе переход в левое или правое поддерево
+		// РРЅР°С‡Рµ РїРµСЂРµС…РѕРґ РІ Р»РµРІРѕРµ РёР»Рё РїСЂР°РІРѕРµ РїРѕРґРґРµСЂРµРІРѕ
 		else if (current->data < key)
 			return _find(current->right, key, count + 1);
 		else
@@ -68,22 +68,22 @@ class Tree
 	}
 
 public:
-	// Конструктор по умолчанию
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 	Tree()
 	{
 		root = NULL;
 	}
 
-	// Конструктор с параметром
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂРѕРј
 	Tree(const TableElement& data)
 	{
 		root = new TreeNode<TableElement>(data);
 	}
 
-	// Добавление данных
+	// Р”РѕР±Р°РІР»РµРЅРёРµ РґР°РЅРЅС‹С…
 	int add(const TableElement& data)
 	{
-		// Если корень пуст, создаем его
+		// Р•СЃР»Рё РєРѕСЂРµРЅСЊ РїСѓСЃС‚, СЃРѕР·РґР°РµРј РµРіРѕ
 		if (root == NULL)
 		{
 			root = new TreeNode<TableElement>(data);
@@ -93,7 +93,7 @@ public:
 			return _add(root, data, 0);
 	}
 
-	// Поиск по ключу
+	// РџРѕРёСЃРє РїРѕ РєР»СЋС‡Сѓ
 	std::pair<TreeNode<TableElement>*, int> find(const TableElement& key)
 	{
 		return _find(root, key, 0);

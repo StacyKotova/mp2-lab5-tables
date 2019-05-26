@@ -1,13 +1,13 @@
-#ifndef HASHTABLE_H
+п»ї#ifndef HASHTABLE_H
 #define HASHTABLE_H
 
 #include "hashnode.h"
 #include <sstream>
 
-// Константа размера хэш-таблицы
+// РљРѕРЅСЃС‚Р°РЅС‚Р° СЂР°Р·РјРµСЂР° С…СЌС€-С‚Р°Р±Р»РёС†С‹
 const size_t SIZE = 100;
 
-// Хэш-функция
+// РҐСЌС€-С„СѓРЅРєС†РёСЏ
 struct KeyHash
 {
 	unsigned long operator()(const std::string& key) const
@@ -19,15 +19,15 @@ struct KeyHash
 	}
 };
 
-// Класс хэш-таблицы
+// РљР»Р°СЃСЃ С…СЌС€-С‚Р°Р±Р»РёС†С‹
 template <typename K, typename V, typename F>
 class HashTable
 {
-	HashNode<K, V> **table; // Таблица
-	F function; // Хэш-функция
+	HashNode<K, V> **table; // РўР°Р±Р»РёС†Р°
+	F function; // РҐСЌС€-С„СѓРЅРєС†РёСЏ
 
 public:
-	// Конструктор хэш-таблицы
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ С…СЌС€-С‚Р°Р±Р»РёС†С‹
 	HashTable()
 	{
 		table = new HashNode<K, V>*[SIZE]();
@@ -41,10 +41,10 @@ public:
 			return false;
 	}
 
-	// Поиск по ключу key и запись в value
+	// РџРѕРёСЃРє РїРѕ РєР»СЋС‡Сѓ key Рё Р·Р°РїРёСЃСЊ РІ value
 	bool get(const K &key, V &value)
 	{
-		// Вычисление хэш-значения
+		// Р’С‹С‡РёСЃР»РµРЅРёРµ С…СЌС€-Р·РЅР°С‡РµРЅРёСЏ
 		unsigned long hashValue = function(key);
 		HashNode<K, V> *entry = table[hashValue];
 
@@ -52,27 +52,27 @@ public:
 		while (entry)
 		{
 			count++;
-			if (entry->key() == key) // Если найдена запись
+			if (entry->key() == key) // Р•СЃР»Рё РЅР°Р№РґРµРЅР° Р·Р°РїРёСЃСЊ
 			{
 				value = entry->value();
-				std::cout << "Хэш-таблица - операций поиска: " << count << std::endl;
+				std::cout << "РҐСЌС€-С‚Р°Р±Р»РёС†Р° - РѕРїРµСЂР°С†РёР№ РїРѕРёСЃРєР°: " << count << std::endl;
 				return true;
 			}
 			entry = entry->next();
 		}
 
-		std::cout << "Полином с таким ключом не найден\n";
+		std::cout << "РџРѕР»РёРЅРѕРј СЃ С‚Р°РєРёРј РєР»СЋС‡РѕРј РЅРµ РЅР°Р№РґРµРЅ\n";
 		return false;
 	}
 
 	void add(const K &key, const V &value)
 	{
-		// Вычисление хэш-значения
+		// Р’С‹С‡РёСЃР»РµРЅРёРµ С…СЌС€-Р·РЅР°С‡РµРЅРёСЏ
 		unsigned long hashValue = function(key);
 		HashNode<K, V> *prev = NULL;
 		HashNode<K, V> *entry = table[hashValue];
 
-		// Вычисление количества операций
+		// Р’С‹С‡РёСЃР»РµРЅРёРµ РєРѕР»РёС‡РµСЃС‚РІР° РѕРїРµСЂР°С†РёР№
 		int count = 1;
 		while (entry && entry->key() != key)
 		{
@@ -81,7 +81,7 @@ public:
 			count++;
 		}
 
-		// Изменение таблицы (перезапись или создание узла)
+		// РР·РјРµРЅРµРЅРёРµ С‚Р°Р±Р»РёС†С‹ (РїРµСЂРµР·Р°РїРёСЃСЊ РёР»Рё СЃРѕР·РґР°РЅРёРµ СѓР·Р»Р°)
 		if (!entry)
 		{
 			entry = new HashNode<K, V>(key, value);
@@ -93,7 +93,7 @@ public:
 		else
 			entry->setValue(value);
 
-		std::cout << "Хэш-таблица - операций добавления: "
+		std::cout << "РҐСЌС€-С‚Р°Р±Р»РёС†Р° - РѕРїРµСЂР°С†РёР№ РґРѕР±Р°РІР»РµРЅРёСЏ: "
 			<< count << std::endl;
 	}
 };

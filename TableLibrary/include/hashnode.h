@@ -1,16 +1,16 @@
-#ifndef HASHNODE_H
+п»ї#ifndef HASHNODE_H
 #define HASHNODE_H
 
-// Класс узла хэш-таблицы
+// РљР»Р°СЃСЃ СѓР·Р»Р° С…СЌС€-С‚Р°Р±Р»РёС†С‹
 template <typename K, typename V>
 class HashNode
 {
-	K _key; // Ключ
-	V _value; // Данные
-	HashNode *_next; // Следующий узел
+	K _key; // РљР»СЋС‡
+	V _value; // Р”Р°РЅРЅС‹Рµ
+	HashNode *_next; // РЎР»РµРґСѓСЋС‰РёР№ СѓР·РµР»
 
 public:
-	// Конструктор
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	HashNode(const K &key, const V &value)
 	{
 		_key = key;
@@ -18,37 +18,37 @@ public:
 		_next = NULL;
 	}
 
-	// Получение ключа
+	// РџРѕР»СѓС‡РµРЅРёРµ РєР»СЋС‡Р°
 	K key() const 
 	{
 		return _key;
 	}
 
-	// Получение данных
+	// РџРѕР»СѓС‡РµРЅРёРµ РґР°РЅРЅС‹С…
 	V value() const
 	{
 		return _value;
 	}
 
-	// Получение следующего узла
+	// РџРѕР»СѓС‡РµРЅРёРµ СЃР»РµРґСѓСЋС‰РµРіРѕ СѓР·Р»Р°
 	HashNode* next() const
 	{
 		return _next;
 	}
 
-	// Изменение ключа
+	// РР·РјРµРЅРµРЅРёРµ РєР»СЋС‡Р°
 	void setKey(const K &key)
 	{
 		_key = key;
 	}
 
-	// Изменение данных
+	// РР·РјРµРЅРµРЅРёРµ РґР°РЅРЅС‹С…
 	void setValue(const V &value)
 	{
 		_value = value;
 	}
 
-	// Изменение следующего узла
+	// РР·РјРµРЅРµРЅРёРµ СЃР»РµРґСѓСЋС‰РµРіРѕ СѓР·Р»Р°
 	void setNext(HashNode *next)
 	{
 		_next = next;

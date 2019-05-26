@@ -1,14 +1,14 @@
-#ifndef TREENODE_H
+п»ї#ifndef TREENODE_H
 #define TREENODE_H
 
-// Структура "узел дерева"
+// РЎС‚СЂСѓРєС‚СѓСЂР° "СѓР·РµР» РґРµСЂРµРІР°"
 template<typename T>
 struct TreeNode
 {
-	T data; // Данные
-	TreeNode *left, *right; // Узлы-потомки
+	T data; // Р”Р°РЅРЅС‹Рµ
+	TreeNode *left, *right; // РЈР·Р»С‹-РїРѕС‚РѕРјРєРё
 	
-	// Конструктор по умолчанию
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 	TreeNode<T>()
 	{
 		this->data = NULL;
@@ -16,7 +16,7 @@ struct TreeNode
 		this->right = NULL;
 	}
 
-	// Конструктор с параметрами
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
 	TreeNode<T>(const T& data)
 	{
 		this->data = data;
@@ -24,7 +24,7 @@ struct TreeNode
 		this->right = NULL;
 	}
 
-	// Конструктор с параметрами
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
 	TreeNode<T>(const T& data, TreeNode<T> *left, TreeNode<T> *right)
 	{
 		this->data = data;

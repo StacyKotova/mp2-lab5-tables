@@ -1,52 +1,52 @@
-#ifndef UNORDERED_TABLE_H
+п»ї#ifndef UNORDERED_TABLE_H
 #define UNORDERED_TABLE_H
 
 #include <iostream>
 #include <vector>
 #include "../include/tableelement.h"
 
-// Класс "неупорядоченная таблица"
+// РљР»Р°СЃСЃ "РЅРµСѓРїРѕСЂСЏРґРѕС‡РµРЅРЅР°СЏ С‚Р°Р±Р»РёС†Р°"
 class UnorderedTable
 {
-	std::vector<TableElement*> *table; // Массив
+	std::vector<TableElement*> table; // РњР°СЃСЃРёРІ
 public:
-	// Конструктор таблицы
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ С‚Р°Р±Р»РёС†С‹
 	UnorderedTable()
 	{
-		table = new std::vector<TableElement*>();
+		table = std::vector<TableElement*>();
 	}
 
 	bool existsKey(const std::string& key)
 	{
-		for (auto te : *table)
+		for (auto te : table)
 			if (te->key() == key)
 				return true;
 		return false;
 	}
 
-	// Добавление данных
+	// Р”РѕР±Р°РІР»РµРЅРёРµ РґР°РЅРЅС‹С…
 	void add(const std::string& key, const Polynomial& p)
 	{
-		table->push_back(new TableElement(key, p));
-		std::cout << "Неупорядоченная таблица - операций добавления: 1." << std::endl;
+		table.push_back(new TableElement(key, p));
+		std::cout << "РќРµСѓРїРѕСЂСЏРґРѕС‡РµРЅРЅР°СЏ С‚Р°Р±Р»РёС†Р° - РѕРїРµСЂР°С†РёР№ РґРѕР±Р°РІР»РµРЅРёСЏ: 1." << std::endl;
 	}
 
-	// Добавление данных
+	// Р”РѕР±Р°РІР»РµРЅРёРµ РґР°РЅРЅС‹С…
 	void add(const TableElement& te)
 	{
 		add(te.key(), te.value());
 	}
 
-	// Получение данных
+	// РџРѕР»СѓС‡РµРЅРёРµ РґР°РЅРЅС‹С…
 	Polynomial get(const std::string& key)
 	{
-		for (size_t i = 0; i < table->size(); i++)
+		for (size_t i = 0; i < table.size(); i++)
 		{
-			if (table->at(i)->key() == key)
+			if (table.at(i)->key() == key)
 			{
-				std::cout << "Неупорядоченная таблица - операций поиска: "
+				std::cout << "РќРµСѓРїРѕСЂСЏРґРѕС‡РµРЅРЅР°СЏ С‚Р°Р±Р»РёС†Р° - РѕРїРµСЂР°С†РёР№ РїРѕРёСЃРєР°: "
 					<< i + 1 << "." << std::endl;
-				return table->at(i)->value();
+				return table.at(i)->value();
 			}
 		}
 		return NULL;
